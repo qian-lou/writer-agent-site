@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writer Agent — 本地优先的专业级 AI 写作工作台</title>
+  <meta name="description" content="Writer Agent 围绕「调研 → 大纲 → 写作 → 审校」组织长内容生产：确定性反 AI 套话门禁、行级精准手术修订、正典状态与伏笔追踪，数据 100% 留在你的本地设备。" />
+  <!-- 内联 SVG favicon:珊瑚橙圆角方块 + 衬线 W -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c15f3c'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%23faf9f5' text-anchor='middle'%3EW%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- 西文标题用 Fraunces(接近编辑衬线气质),加载失败自动回退系统衬线 -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ============ 顶部导航 ============ -->
+  <header class="nav" id="siteNav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="Writer Agent 首页">
+        <span class="brand-mark" aria-hidden="true">W</span>
+        <span class="brand-name">Writer Agent</span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="#workflow">工作流</a>
+        <a href="#features">核心特性</a>
+        <a href="#comparison">深度对比</a>
+        <a href="#cockpit">创作驾驶舱</a>
+        <a href="#audiences">适用人群</a>
+        <a href="#faq">常见问题</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-ghost" href="#faq">了解更多</a>
+        <a class="btn btn-primary" href="#download">下载桌面版</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-menu" id="mobileMenu" aria-label="移动端导航" hidden>
+      <a href="#workflow">工作流</a>
+      <a href="#features">核心特性</a>
+      <a href="#comparison">深度对比</a>
+      <a href="#cockpit">创作驾驶舱</a>
+      <a href="#audiences">适用人群</a>
+      <a href="#faq">常见问题</a>
+      <a class="btn btn-primary" href="#download">下载桌面版</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- ============ Hero ============ -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow reveal"><span class="eyebrow-no">v2.0</span> 本地优先的专业长篇写作工作台</p>
+          <h1 class="hero-title reveal">从模糊选题，<br />到<span class="red-circle">可核验</span>的成稿。</h1>
+          <p class="hero-sub reveal">
+            拒绝单轮对话吐字的失控与严重的“AI 假大空套话”。Writer Agent 将出版级工业流程工程化：
+            先定<span class="mark">正典与伏笔</span>，再落笔正文；7 大专业角色协同交付，
+            <span class="mark">行级外科手术精准修订</span>，一切数据 100% 留在你的本地设备。
+          </p>
+          <p class="hand-note reveal">← 拒绝整章推翻重写，每一行字都经得起检验</p>
+          <div class="hero-cta reveal">
+            <a class="btn btn-primary btn-lg" href="#download">下载桌面版</a>
+            <a class="btn btn-outline btn-lg" href="#comparison">看看它怎么工作</a>
+          </div>
+          <p class="hero-note reveal">Tauri 桌面原生 · 内存仅几十MB · 支持 Claude / OpenAI / DeepSeek / Ollama</p>
+        </div>
+
+        <!-- 纯 CSS 产品示意:应用窗口(大纲 / 正文行级差分 / 审校体检) -->
+        <div class="hero-visual reveal" aria-hidden="true">
+          <div class="doodle-circle"></div>
+          <div class="app-window">
+            <span class="window-note">正典已锁定 · 伏笔对齐 ✓</span>
+            <div class="app-titlebar">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="app-titlebar-text">《长夜回响》· 第 14 章 · 迷雾密室 (正典 Rev. 4)</span>
+            </div>
+            <div class="app-body">
+              <div class="app-outline">
+                <p class="app-pane-label">章节 & 伏笔</p>
+                <div class="outline-item done">第 12 章 · 遗落的怀表 ✓</div>
+                <div class="outline-item done">第 13 章 · 钟楼密约 ✓</div>
+                <div class="outline-item active">第 14 章 · 迷雾密室</div>
+                <div class="outline-item">第 15 章 · 破晓之剑</div>
+                <div class="outline-debt-badge">伏笔追踪: 3/4 已闭合</div>
+              </div>
+              <div class="app-draft">
+                <p class="app-pane-label">正文（行级外科手术）</p>
+                <div class="line w-90"></div>
+                <div class="line w-100"></div>
+                <div class="patch-box">
+                  <span class="patch-badge">- 删减 AI 腔套话</span>
+                  <div class="patch-line patch-del">他心中涌起一股无法遏制的强烈震撼……</div>
+                  <span class="patch-badge patch-badge-add">+ 具身动作替换</span>
+                  <div class="patch-line patch-add">烛芯爆出一声轻响，指节在青铜握把上攥出白痕。</div>
+                </div>
+                <div class="line w-85"></div>
+                <div class="line w-100 accent-line"></div>
+                <div class="line w-75"></div>
+              </div>
+              <div class="app-review">
+                <p class="app-pane-label">质检验收</p>
+                <div class="review-card">
+                  <span class="review-tag tag-ok">反 AI 味</span>
+                  确定性评分: 98 分<br />
+                  <span class="review-sub">零模板套话 · 标点方差正常</span>
+                </div>
+                <div class="review-card">
+                  <span class="review-tag tag-ok">伏笔闭合</span>
+                  「银色怀表」在 L42 正确触发
+                </div>
+                <div class="review-card">
+                  <span class="review-tag tag-warn">行级审查</span>
+                  L56 关系张力建议强化
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 信任条 ============ -->
+    <section class="strip">
+      <div class="container strip-inner">
+        <span><span class="check">✓</span>100% 数据不出设备</span>
+        <span><span class="check">✓</span>确定性反 AI 味门禁</span>
+        <span><span class="check">✓</span>行级精准局部修订</span>
+        <span><span class="check">✓</span>跨百章正典不漂移</span>
+        <span><span class="check">✓</span>7 角色专业团队协同</span>
+      </div>
+    </section>
+
+    <!-- ============ 工作流 ============ -->
+    <section class="section" id="workflow">
+      <div class="container">
+        <p class="eyebrow reveal"><span class="eyebrow-no">No. 01</span> 创作流水线</p>
+        <h2 class="section-title reveal">长篇写作是工程流水线，<br />不是一次性的<span class="red-del">盲盒抽卡</span>。</h2>
+        <p class="section-sub reveal">四个阶段环环相扣，上游交付冻结后才开启下游；每一个节点都有据可查，每一次修改都有迹可循。</p>
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step-num">01</span>
+            <h3>素材与调研 (Source)</h3>
+            <p>导入本地 PDF、Markdown 与文献资料。自动建立行级锚点索引，提取可信事实，<del class="red-del">杜绝大模型胡编乱造</del>。</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">02</span>
+            <h3>正典与伏笔 (Canon & Plan)</h3>
+            <p>锁定世界观、人物弧光与读者承诺。未闭合伏笔建立「情节债账本」，在后续章节规划中主动提示与消解。</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">03</span>
+            <h3>角色协同撰写 (Team DAG)</h3>
+            <p>总编、设定、情节架构师与人物导演生成严密约束；章节作者先进行「写前预热（Warmup）」，再落笔正文。</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">04</span>
+            <h3>双审与行级修订 (Review)</h3>
+            <p>宏观故事编辑把控因果与节奏，微观文字编辑执行 AI 味门禁。意见直指行号，仅对问题区间打补丁，不通过不交付。</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 深度对比 ============ -->
+    <section class="section section-alt" id="comparison">
+      <div class="container">
+        <p class="eyebrow reveal"><span class="eyebrow-no">No. 02</span> 深度对比</p>
+        <h2 class="section-title reveal">为什么普通 AI 无法驾驭长篇创作？</h2>
+        <p class="section-sub reveal">单轮对话大模型是“即兴漫谈者”，而 Writer Agent 是严谨的“出版工程工作室”。</p>
+        
+        <div class="contrast-grid">
+          <article class="contrast-card contrast-bad reveal">
+            <div class="contrast-header">
+              <span class="contrast-badge bad">× 普通对话 AI 写作</span>
+            </div>
+            <ul class="contrast-list">
+              <li>
+                <strong>全篇推翻重写：</strong> 提一个微小修改意见，AI 就把 3000 字整章重新生成，前文精彩的比喻和句式荡然无存。
+              </li>
+              <li>
+                <strong>严重的“AI 假大空套话”：</strong> 充斥着“不仅如此、心中涌起热流、眼神中闪过一丝决绝”等机械模板，千人一面。
+              </li>
+              <li>
+                <strong>长篇严重遗忘与设定崩塌：</strong> 写到第 20 章就忘记第 3 章埋下的伏笔，甚至出现“死人复活、战力体系混乱”。
+              </li>
+              <li>
+                <strong>隐私裸奔与云端锁定：</strong> 你的独家大纲和未发表手稿被实时上传至厂商服务器，存在严重的泄露与语料风险。
+              </li>
+            </ul>
+          </article>
+
+          <article class="contrast-card contrast-good reveal">
+            <div class="contrast-header">
+              <span class="contrast-badge good">✓ Writer Agent 工业级流水线</span>
+            </div>
+            <ul class="contrast-list">
+              <li>
+                <strong>行级外科手术式修订：</strong> 审校意见精准定位到行区间（如 L42-L46），只替换问题段落，其余正文毫发无损。
+              </li>
+              <li>
+                <strong>确定性反 AI 味与具身感官字典：</strong> 纯算法（$O(N)$）实时扫描句长方差与模板词，强制注入动作细节与物理感官。
+              </li>
+              <li>
+                <strong>正典状态机与伏笔债追踪：</strong> 人物状态与世界观随章节增量审核，自动索引全书未闭合悬念，跨百章严丝合缝。
+              </li>
+              <li>
+                <strong>100% 纯本地优先：</strong> 数据保存在本地磁盘，断网全功能可用，支持一键创建安全快照与完整归档。
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 核心特性 ============ -->
+    <section class="section" id="features">
+      <div class="container">
+        <p class="eyebrow reveal"><span class="eyebrow-no">No. 03</span> 核心特性</p>
+        <h2 class="section-title reveal">为严肃写作者打造的硬核工具箱</h2>
+        <p class="section-sub reveal">每一个模块都源自真实创作场景的痛点，用现代软件工程标准重新定义长文生产。</p>
+        
+        <div class="cards cards-4">
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M8 21h8"/></svg>
+            </div>
+            <h3>100% 本地优先</h3>
+            <p>草稿、大纲、人物档案全部保存在本地 `.writer/projects/`。断网可用，自带崩溃事务恢复与完整项目快照备份。</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <h3>确定性反 AI 味门禁</h3>
+            <p>零 LLM 的纯算法质量检测：机械复读、句式均匀度方差、直接情绪标签与假大空套话自动拦截，保障质感。</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <h3>行级精准手术修订</h3>
+            <p>拒绝全章推翻重写。审校意见直指行号，仅对指定区间打上最小差分补丁（Diff Patch），极大节省 Token 与修改成本。</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="13" y2="11"/></svg>
+            </div>
+            <h3>正典状态与防漂移</h3>
+            <p>单章产生的人物变化、新事实先作为候选增量（Canon Delta），经作者确认后才合入正史，杜绝模型幻觉。</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3>伏笔追踪与情节债</h3>
+            <p>全书未闭合的悬念、角色间的信息差自动登记为「情节债」，在后续分场与章节规划中主动提示作者推进闭环。</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-5"/><path d="M12 3l7 4v5c0 4.4-3 8.4-7 9-4-.6-7-4.6-7-9V7l7-4z"/></svg>
+            </div>
+            <h3>证据账本与文献锚点</h3>
+            <p>针对非虚构与事实型写作，支持 PDF 与文献切片。正文断言与源文献 `SRC-*` 严格绑定，提供确定性词法检索。</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+            </div>
+            <h3>7 大专业角色协同</h3>
+            <p>总编、设定架构师、情节架构师、人物导演、章节作者、故事编辑与文字编辑各司其职，过程透明可审计。</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            </div>
+            <h3>专属文风画像与诊断</h3>
+            <p>上传个人代表作样稿，本地仅提取抽象统计特征画像（不保存/不泄露原文），实时诊断生成正文的文风漂移度。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 可视化创作驾驶舱 ============ -->
+    <section class="section section-alt" id="cockpit">
+      <div class="container">
+        <p class="eyebrow reveal"><span class="eyebrow-no">No. 04</span> 创作驾驶舱</p>
+        <h2 class="section-title reveal">看得见的情绪起伏与叙事节拍</h2>
+        <p class="section-sub reveal">写作不仅是文字的排列，更是节奏的艺术。驾驶舱将宏观叙事动力学转化为直观的可视化仪表盘。</p>
+        
+        <div class="cockpit-showcase reveal">
+          <div class="cockpit-card">
+            <div class="cockpit-card-header">
+              <span class="cockpit-title">📈 情绪起伏曲线 (Emotion Curve)</span>
+              <span class="cockpit-tag">平缓 → 积累悬念 → 爆发高潮</span>
+            </div>
+            <div class="cockpit-graph-box">
+              <div class="curve-chart">
+                <svg viewBox="0 0 500 120" class="curve-svg">
+                  <path d="M 10 90 Q 90 85 150 60 T 280 70 T 380 20 T 490 35" fill="none" stroke="#c23b22" stroke-width="3" stroke-linecap="round" />
+                  <circle cx="150" cy="60" r="5" fill="#c23b22" />
+                  <circle cx="280" cy="70" r="5" fill="#c23b22" />
+                  <circle cx="380" cy="20" r="6" fill="#c23b22" />
+                </svg>
+                <div class="curve-markers">
+                  <span>第1场: 伏线初露</span>
+                  <span>第2场: 意外阻力</span>
+                  <span class="marker-highlight">第3场: 戏剧高潮 (Peak)</span>
+                  <span>第4场: 悬念留白</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cockpit-grid-sub">
+            <div class="cockpit-sub-card">
+              <h4>🥁 句式节奏与方差 (Cadence)</h4>
+              <p>短句制造压迫感，长句铺陈氛围。系统分析句子长度离散度，避免千篇一律的催眠节奏。</p>
+              <div class="cadence-bars">
+                <div class="bar bar-short" title="短句(8字)"></div>
+                <div class="bar bar-long" title="长句(42字)"></div>
+                <div class="bar bar-med" title="中句(22字)"></div>
+                <div class="bar bar-short" title="短句(6字)"></div>
+                <div class="bar bar-med" title="中句(18字)"></div>
+              </div>
+            </div>
+
+            <div class="cockpit-sub-card">
+              <h4>🪝 伏笔与情节债仪表 (Plot Debt)</h4>
+              <p>全书已设伏笔 18 处，已回收 14 处。本章计划闭合 2 处核心悬念，确保主线推进清晰有力。</p>
+              <div class="debt-progress">
+                <div class="debt-progress-bar" style="width: 78%;"></div>
+                <span class="debt-text">78% 伏笔已闭合 (健康)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 编辑式引言 ============ -->
+    <section class="section">
+      <div class="container">
+        <blockquote class="pullquote reveal">
+          <p>「先想清楚为谁而写、要兑现什么承诺，<br class="br-wide" />再让每一句话、每一个伏笔都能被精确检验。」</p>
+          <cite>—— Writer Agent 架构哲学</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ============ 适用人群 ============ -->
+    <section class="section section-alt" id="audiences">
+      <div class="container">
+        <p class="eyebrow reveal"><span class="eyebrow-no">No. 05</span> 适用人群</p>
+        <h2 class="section-title reveal">四种严肃创作，同一套严密章法。</h2>
+        <div class="cards cards-4">
+          <article class="card reveal">
+            <h3>长篇网文 & 小说作者</h3>
+            <p>章节级手稿、人物正典档案与伏笔追踪，让百章以上的宏大世界观和人物弧光始终严丝合缝。</p>
+          </article>
+          <article class="card reveal">
+            <h3>深度非虚构与调查记者</h3>
+            <p>证据账本与文献行级锚点，让每一次断言都具备坚实出处，写出扎实可考的重磅报道与行业白皮书。</p>
+          </article>
+          <article class="card reveal">
+            <h3>影视编剧与剧本杀作者</h3>
+            <p>因果分场计划（Scene Plan）与人物动作/语言指纹，严防角色崩坏，精准调度戏剧冲突与情绪高潮。</p>
+          </article>
+          <article class="card reveal">
+            <h3>专业出版与内容团队</h3>
+            <p>从策划简报到多渠道成稿，多角色协同流转、行级审校留痕，大幅提升团队长内容生产效率。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq">
+      <div class="container container-narrow">
+        <p class="eyebrow reveal"><span class="eyebrow-no">No. 06</span> 常见问题</p>
+        <h2 class="section-title reveal">你可能想了解的技术细节</h2>
+        <div class="faq-list">
+          <details class="faq-item reveal">
+            <summary>Writer Agent 支持哪些 AI 模型服务？</summary>
+            <p>你可以自由接入任何兼容 OpenAI 接口的提供商（如 DeepSeek、OpenAI、Kimi、通义千问等）、Anthropic Claude 官方 API，或者通过 Ollama / vLLM 在本地运行开源大模型。API Key 仅通过系统级加密 Keychain 本地存储，我们不中转、不抽成。</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>我的小说稿件和原创大纲会被泄露或拿去训练吗？</summary>
+            <p>绝对不会。Writer Agent 遵循 100% 本地优先原则，所有项目文件保存在本地磁盘目录（`.writer/projects/`），文体统计和反 AI 味检测完全由本地 Rust 核心算法计算，没有任何云端收集行为。</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>它如何确保生成的文章没有“AI 假大空味”？</summary>
+            <p>它不依赖模型自夸，而是采用确定性双重门禁：① 写前通过题材具身字典（强调五感与具体物理动作，禁止空洞形容词）；② 写后由 Rust 算法对句长方差、标点节奏、模板连接词进行硬性扫描，不达标直接触发精准行级局部修复。</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>什么是“行级外科手术式局部修订”？</summary>
+            <p>传统 AI 写作在修改时往往把整章 3000 字全篇推翻重写，导致前文细节丢失且极耗 Token。Writer Agent 的审校角色会精准指出问题所在的行号（如第 42-45 行），仅针对该片段生成 Diff 补丁并原子应用，其余正文保持原汁原味。</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>软件对电脑硬件配置有要求吗？</summary>
+            <p>极低。桌面端基于 Tauri + Rust 构建，内存占用通常仅几十 MB，启动仅需毫秒级。macOS（Apple Silicon & Intel）、Windows 10/11、Linux 均可流畅运行。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 底部 CTA / 下载 ============ -->
+    <section class="section cta" id="download">
+      <div class="seal" aria-hidden="true">已审校 · 可交付</div>
+      <div class="container cta-inner">
+        <h2 class="cta-title reveal">把你的下一部长篇，<br />交给一条<span class="red-circle">可核验</span>的工业级流水线。</h2>
+        <div class="hero-cta reveal">
+          <a class="btn btn-primary btn-lg" href="#download" aria-label="下载 macOS 版">下载 macOS 版 (.dmg)</a>
+          <a class="btn btn-outline btn-lg" href="#download" aria-label="下载 Windows / Linux 版">Windows / Linux 版</a>
+        </div>
+        <p class="hero-note reveal">桌面原生 · 100% 本地运行 · 你的文字资产永远属于你</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ 页脚 ============ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true">W</span>
+          <span class="brand-name">Writer Agent</span>
+        </a>
+        <p>本地优先的专业级 AI 写作工作台。<br />拒绝 AI 腔调，让每一次落笔都有据可查。</p>
+      </div>
+      <nav class="footer-col" aria-label="产品">
+        <h4>产品</h4>
+        <a href="#workflow">工作流</a>
+        <a href="#features">核心特性</a>
+        <a href="#comparison">深度对比</a>
+        <a href="#cockpit">创作驾驶舱</a>
+      </nav>
+      <nav class="footer-col" aria-label="技术">
+        <h4>技术</h4>
+        <a href="#faq">反 AI 味门禁</a>
+        <a href="#faq">行级精准修订</a>
+        <a href="#faq">正典状态机</a>
+        <a href="#faq">本地隐私安全</a>
+      </nav>
+      <nav class="footer-col" aria-label="支持与服务">
+        <h4>支持与服务</h4>
+        <a href="#faq">常见问题</a>
+        <a href="#audiences">适用人群</a>
+        <a href="#download">版本下载</a>
+        <a href="#faq">意见与反馈</a>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Writer Agent · Local-First AI Writing Studio</span>
+      <span>认真写作的人，值得拥有认真的工业级工具。</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
